@@ -1,27 +1,36 @@
-# AngularElectronStarterTemplate
+# Angular Electron Starter Template
+This template allows you to build an Angular 9 application that can be ran as a desktop application using Electron.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.7.
+# Electron
+Electron is a framework for creating web applications that are able to be run as desktop applications. 
 
-## Development server
+# Electron Folder
+Inside this folder, you will see two files. `main.ts`, and `tsconfig.json`. These files will be used when you compile your
+Electron application. The `main` file will be compiled to JavaScript, and be used as the entry point for your Angular application when
+running the Electron application. `tsconfig` indicates that the `electron` directory is the root of a TypeScript project, and contains information
+that the TypeScript compiler will use in order to compile your `main.ts` file to JavaScript.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+The `main.ts` file contains all of the relevant code to create and display the application. Within this file, you can determine screen size, application behavior on create and close and even whether or not Chromium DevTools should be opened when opening the application. There are many options 
 
-## Code scaffolding
+# Package
+The `package.json` file contains the `main` entry point for the Electron application, as well as the script for building and running the application.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+This file also contains many Angular properties for your application that you can change as well.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+# Versions
+This starter template uses Angular version `9.1.9` and Electron version `9.0.1`.
 
-## Running unit tests
+# Ignore File
+In the `.gitignore` file, I have added `electron/dist` to be ignored. Since this is the build of the files, we would not want to commit this to version control.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+# Running the Application
+The application can be ran using the following command while in the root of the project directory:
+```
+npm run electron
+```
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+This command will execute three commands as part of it:
+1. `ng build --base-href ./` which will build the application and set the `base-href` property to the root directory.
+2. `tsc --p electron` which will compile the code in the `electron` folder to JavaScript.
+3. `electron .` which will run the Electron application using the `main` property in your `package.json` file.
